@@ -1,0 +1,57 @@
+% Use this editor as a MiniZinc scratch book
+var int: x; 
+var int: y; 
+
+function var int: manhattan_distance(var int: x1, var int: y1, var int:x2, var int:y2)=
+abs(x1-x2)+abs(y1-y2);
+
+
+
+solve minimize 
+manhattan_distance(1,2,x,y)+
+manhattan_distance(2,2,x,y)+
+manhattan_distance(3,2,x,y);
+
+constraint x!=1 \/ y!=2;
+constraint x!=2 \/ y!=2;
+constraint x!=3 \/ y!=2;
+
+constraint x>=0;
+constraint y>=0;
+constraint x<5;
+constraint y<5;
+
+
+
+
+
+------------------
+5
+3
+A 1 2
+B 2 2
+C 3 2
+
+
+var int: x; 
+var int: y; 
+var float: z;
+
+constraint z=abs(x-1)+abs(y-2)+abs(x-2)+abs(y-2)+abs(x-3)+abs(y-2);
+
+solve minimize z;
+
+constraint x!=1 \/ y!=2;
+constraint x!=2 \/ y!=2;
+constraint x!=3 \/ y!=2;
+
+constraint abs(x-1)+abs(y-2)<=pow(abs(x-1)+abs(y-2),2);
+constraint abs(x-2)+abs(y-2)<=pow(abs(x-2)+abs(y-2),2);
+constraint abs(x-3)+abs(y-2)<=pow(abs(x-3)+abs(y-2),2);
+
+constraint abs(x-1)+abs(y-2)>=0;
+constraint abs(x-2)+abs(y-2)>=0;
+constraint abs(x-3)+abs(y-2)>=0;
+
+
+https://es.overleaf.com/project/638c086817a512c865c2ebb1
