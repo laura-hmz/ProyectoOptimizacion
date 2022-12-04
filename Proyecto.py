@@ -70,22 +70,27 @@ def create_grid(z):
 ###############################################################################
 
 root = tk.Tk()
-root.geometry("1000x600")
-c = tk.Canvas(root,bg='#464D43')
+root.geometry("1000x610")
+root.title("Arena de dragones Westeros")
+c = tk.Canvas(root,bg='#ADADFF')
 c.pack(fill=tk.BOTH, expand=True)
 c.create_rectangle(0,0,500,500, width=1, fill='white')
-texto = Text(c,width=50,height=15,background="white")
+
+Label(c,text="CUADRANTE REPRESENTACIÓN DE CIUDADES", font=("times new roman",15), bg="khaki3",fg="black").place(x=20,y=530)
+Label(c,text="Información ciudades", font=("times new roman",9), bg="khaki3",fg="black").grid(padx=550,pady=5)
+texto = Text(c,width=50,height=10,background="white")
 texto.grid(padx=550,pady=5)
-texto3 = Text(c,width=50,height=15,background="white")
+Label(c,text="Código minizinc", font=("times new roman",9), bg="khaki3",fg="black").grid(padx=550,pady=5)
+texto3 = Text(c,width=50,height=16,background="white")
 texto3.grid(padx=550,pady=3)
 Display = Button(c, height = 2,
                  width = 20,
-                 text ="solucionar",
-                 command = lambda:Take_input())
-Display.grid(padx=550,pady=1)
+                 text ="Solucionar",
+                 command = lambda:Take_input(),font=("times new roman", 12), bg="dimgrey",fg="cornsilk2",bd=0,cursor="hand2").place(x=560,y=510)
 Display2 = Button(c, height = 2,
                  width = 20,
-                 text ="borrar",
-                 command = lambda:borrar())
-Display2.grid(padx=550,pady=5)
+                 text ="Borrar",
+                 command = lambda:borrar(),font=("times new roman", 12), bg="dimgrey",fg="cornsilk2",bd=0,cursor="hand2").place(x=760,y=510)
+
+root.resizable(0,0)
 root.mainloop()
