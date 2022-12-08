@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 def borrar():
     texto3.delete("1.0","end")
     create_grid(1)
-    c.create_rectangle(0,0,500,500, width=1, fill='white')
+    c.create_rectangle(0,0,500,500, width=1, fill='steelblue')
 
 def Take_input():
     global modificar,pulir,bandera,cont1,cont2,variablefinal
@@ -68,44 +68,46 @@ def create_grid(z):
         n = tamano_matriz*i
         c.create_line([(0, n), (tamano, n)], tag='grid_line')
         i=i+1
-###############################################################################
+#####################################Interfazzzzzzzz##########################################
 
 root = tk.Tk()
 root.geometry("1020x600")
 root.title("Arena de dragones Westeros")
 bg=ImageTk.PhotoImage(file="dragon.jpg")
 
+
 frame = Frame(root, width=1020, height=600, bd=1,bg='#ADADFF')
 frame.pack()
 Label(frame,image=bg).place(x=0,y=0,relwidth=1,relheight=1)
 
-Label(frame,text="CUADRANTE REPRESENTACIÓN DE CIUDADES", font=("times new roman",15), bg="khaki3",fg="black").place(x=500,y=15)
+Label(frame,text="REPRESENTACIÓN DE CIUDADES", font=("times new roman",15), bg="khaki3",fg="black",width=45).place(x=500,y=21)
 
-iframe5 = Frame(frame, bd=2,bg='blue')
+iframe5 = Frame(frame, bd=2,bg='blue') #Donde se pintan las ciudades
 iframe5.place(x=500,y=50,width=500, height=500)
 
 c = tk.Canvas(iframe5,bg='#464D43')
 c.pack(fill=tk.BOTH, expand=True)
-c.create_rectangle(0,0,500,500, width=1, fill='royalblue')
+c.create_rectangle(0,0,500,500, width=1, fill='steelblue' )
 
-Label(frame,text="INGRESO INFORMACIÓN DE CIUDADES", font=("times new roman",9),bg="khaki3", fg="black").place(x=150,y=15)
+Label(frame,text="INGRESE LA INFORMACIÓN DE LAS CIUDADES", font=("times new roman",9),bg="khaki3", fg="black",width=57).place(x=20,y= 30)
 
 texto = Text(frame,width=50,height=10,background="white")
 texto.place(x=20,y=50)
 
-Label(frame,text="CODIGO MINIZINC", font=("times new roman",9), bg="khaki3",fg="black").place(x=150,y=230)
+Label(frame,text="CÓDIGO GENERADO PARA MINIZINC", font=("times new roman",9), bg="khaki3",fg="black",width=57).place(x=20,y=280)
 
 texto3 = Text(frame,width=50,height=15,background="white")
-texto3.place(x=20,y=270)
-Display = Button(frame, height = 2,
-                 width = 20,
-                 text ="Solucionar",
-                 command = lambda:Take_input(),font=("times new roman", 12), bg="dimgrey",fg="cornsilk2",bd=0,cursor="hand2").place(x=50,y=540)
+texto3.place(x=20,y=300)
 
-Displa2 = Button(frame, height = 2,
-                 width = 20,
-                 text ="Borrar",
-                 command = lambda:borrar(),font=("times new roman", 12), bg="dimgrey",fg="cornsilk2",bd=0,cursor="hand2").place(x=250,y=540)
+boton1 = Button(frame, height = 1,
+                 width = 15,
+                 text ="Iniciar",
+                 command = lambda:Take_input(),font=("times new roman", 12), bg="green",fg="cornsilk2",bd=0,cursor="hand2").place(x=60,y=230)
+
+boton2 = Button(frame, height = 1,
+                 width = 15,
+                 text ="Limpiar resultados",
+                 command = lambda:borrar(),font=("times new roman", 12), bg="dimgrey",fg="cornsilk2",bd=0,cursor="hand2").place(x=240,y=230)
 
 root.resizable(0,0)
 root.mainloop()
